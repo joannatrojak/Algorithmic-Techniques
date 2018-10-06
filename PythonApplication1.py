@@ -1,5 +1,7 @@
 import numpy as np 
 import random as r
+from timeit import Timer
+
 def insertionSort(array): 
      for j in range(1,len(array)):
          key = array[j]
@@ -11,10 +13,12 @@ def insertionSort(array):
      return array
 
 
-start = r.randint(1, 1000)
-end = r.randint(1, 1000)
-size = r.randint(1, 1000)
+start = r.randint(1, 100)
+end = r.randint(1, 100)
+size = r.randint(1, 100)
 x = np.random.randint(start, end+start, size+end)
+t = Timer(lambda: insertionSort(x))
+print(t.timeit(number=1))
 print(insertionSort(x))
 
 
