@@ -1,3 +1,5 @@
+import numpy as np 
+import random as r
 def insertionSort(array): 
      for j in range(1,len(array)):
          key = array[j]
@@ -8,5 +10,11 @@ def insertionSort(array):
          array[i+1] = key
      return array
 
-x = [5,2,4,6,1,3]
+
+start = r.randint(1, 1000)
+end = r.randint(1, 1000)
+size = r.randint(1, 1000)
+x = np.random.randint(start, end+start, size+end)
 print(insertionSort(x))
+
+
