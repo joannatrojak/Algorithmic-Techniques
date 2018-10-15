@@ -1,3 +1,7 @@
+import random as r
+import numpy as np 
+from timeit import Timer
+
 def quick_sort(A):
 	quick_sort2(A, 0, len(A)-1)
 	
@@ -15,9 +19,11 @@ def get_pivot(A, low, hi):
 	elif s[1] == A[mid]:
 		return mid
 	return hi
-	
+def get_pivot_random(A, low, hi): 
+    return r.randrange(low, hi+1)
+
 def partition(A, low, hi):
-	pivotIndex = get_pivot(A, low, hi)
+	pivotIndex = get_pivot_random(A, low, hi)
 	pivotValue = A[pivotIndex]
 	A[pivotIndex], A[low] = A[low], A[pivotIndex]
 	border = low
@@ -39,7 +45,10 @@ def quick_selection(x, first, last):
 		if minIndex != i:
 			x[i], x[minIndex] = x[minIndex], x[i]
 			
-A = [5,9,1,2,4,8,6,3,7]
-print(A)
-quick_sort(A)
-print(A)
+
+start = r.randint(1, 10)
+end = r.randint(10, 20)
+size = r.randint(1, 10)
+x = np.random.randint(start, end+start, size+end)
+t = Timer(lambda: quick_sort(x))
+print(t.timeit(number=1))
